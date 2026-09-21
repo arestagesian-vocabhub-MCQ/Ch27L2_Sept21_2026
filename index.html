@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Farsi Vocabulary Challenge - Chapter 27_Lesson 2</title>
+<style>
+  body {
+    font-family: "Times New Roman", serif;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 10px;
+  }
+  h1, h2, #vocab-word, #context-section {
+    text-align: center;
+  }
+  h1 {
+    font-weight: bold;
+    font-size: 1.9rem;
+    margin-bottom: 0;
+  }
+  h2 {
+    font-weight: normal;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  #vocab-word {
+    font-size: 1.65rem; /* slightly smaller than before but larger than before-reduced */
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  #answers {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  .answer-box {
+    color: white;
+    font-family: "Times New Roman", serif;
+    font-size: 1.4rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .answer-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.35);
+  }
+  .answer-box:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.25) inset;
+  }
+  .color-blue { background-color: #2196f3; }
+  .color-orange { background-color: #ff9800; }
+  .color-purple { background-color: #9c27b0; }
+  .answer-box .feedback { margin-left: 15px; font-size: 1.5rem; }
+  #context-section {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  #reveal-btn {
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 7px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  #reveal-btn.active {
+    background-color: #4caf50;
+    box-shadow: 0 0 15px #4caf50;
+  }
+  #reveal-indicator {
+    display: none;
+    text-align: center; /* center both arrow and text */
+    animation: bounce 1s infinite;
+    margin-top: 5px;
+  }
+  #reveal-arrow {
+    display: block;
+    font-size: 1.5rem;  /* bigger arrow */
+    margin-bottom: 2px;
+  }
+  #reveal-text {
+    display: block;
+    font-size: 1.2rem;
+    color: brown;       /* font color brown */
+    font-weight: bold;  /* bold text */
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  #farsi-context {
+    filter: blur(6px);
+    font-size: 1.4rem;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    user-select: none;
+    min-height: 55px;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  #farsi-context.context-clear { filter: none; user-select: text; }
+  #english-context {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+    min-height: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+  }
+  audio { width: 100%; margin-top: 10px; outline: none; }
+  #navigation { display: flex; justify-content: space-between; align-items: center; }
+  button {
+    font-family: "Times New Roman", serif;
+    font-size: 1rem;
+    padding: 10px 18px;
+    cursor: pointer;
+    background-color: #2196f3;
+    border: none;
+    border-radius: 6px;
+    color: white;
+  }
+  button:disabled { background-color: #90caf9; cursor: not-allowed; }
+  #progress-text { font-size: 1rem; }
+  @media (max-width: 480px) {
+    body { margin: 10px; }
+    .answer-box { font-size: 1rem; padding: 8px 15px; }
+  }
+  #audio-mc-section {
+    display: none;
+    text-align: center;
+    margin-top: 25px;
+  }
+  #audio-mc-section p {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  #audio-mc-section .answer-box {
+    font-size: 1.3rem;
+    margin: 12px auto;
+    max-width: 650px;
+    padding: 10px 20px;
+    border: none;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+  }
+  #audio-mc-section .answer-box .feedback {
+    font-size: 1.6rem;
+    margin-left: 15px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Farsi Vocabulary Challenge</h1>
+<h2>Chapter 27_Lesson 2</h2>
+
+<div id="vocab-word">Loading...</div>
+<div id="answers"></div>
+
+<div id="context-section">
+  <button id="reveal-btn">Reveal Context</button>
+  <div id="reveal-indicator">
+    <span id="reveal-arrow">⬆️</span>
+    <span id="reveal-text">Now you can click Reveal Context! 🎉</span>
+  </div>
+  <div id="farsi-context">...</div>
+  <div id="english-context"></div>
+  <audio id="audio-player" controls preload="none">
+    <source src="" type="audio/wav" />
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+<div id="audio-mc-section"></div>
+
+<div id="navigation">
+  <button id="back-btn">Back</button>
+  <div id="progress-text"></div>
+  <button id="next-btn">Next</button>
+</div>
+
+<script>
+const vocabData = [
+  {
+    word: "اِرث",
+    correct: "inheritance",
+    distractors: ["greed", "heritage"],
+    farsiContext: "در بسیاری از مناطق ایران، قوانین سنتی همچنان مانع می‌شوند که زنان سهم ارث برابر با برادران خود دریافت کنند، و این تبعیض موجب ایجاد مشکلات اقتصادی و اجتماعی برای آن‌ها می شود",
+    englishContext: "In many regions of Iran, traditional laws still prevent women from receiving an inheritance equal to that of their brothers, and this discrimination creates economic and social problems for them",
+    audio: "01.wav",
+    multipleChoice: [
+      {
+        question: "How do inheritance laws in these regions affect women?",
+        options: [
+          { answer: "They reinforce social and economic inequalities", correct: true },
+          { answer: "They give women more financial control than men", correct: false },
+          { answer: "They ensure equal wealth distribution", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "اِمتیاز",
+    correct: "privilege",
+    distractors: ["disadvantage", "beneficial"],
+    farsiContext: "مردان در بسیاری از بخش‌های جامعه از امتیاز‌های قانونی و نانوشته‌ای برخوردارند که زنان حتی پس از سال‌ها تلاش سیاسی و اجتماعی هنوز نتوانسته‌اند به آن دست یابند",
+    englishContext: "Men in many sectors of society enjoy legal and unwritten privileges that women, even after years of political and social struggle, have not yet been able to attain",
+    audio: "02.wav",
+    multipleChoice: [
+      {
+        question: "What does the audio imply about men’s position compared to women?",
+        options: [
+          { answer: "Men face more restrictions than women", correct: false },
+          { answer: "Men and women share equal legal and social benefits", correct: false },
+          { answer: "Men hold advantages not formally available to women", correct: true }
+          
+        ]
+      }
+    ]
+  },
+  {
+    word: "اِنحِصاری",
+    correct: "exclusive",
+    distractors: ["one of a kind", "terretorial"],
+    farsiContext: "مشاغل مدیریتی و تصمیم‌گیری در نهادهای دولتی به شکل انحصاری در اختیار مردان قرار دارد و زنان تقریباً هیچ فرصتی برای رسیدن به این موقعیت‌ها پیدا نمی‌کنند",
+    englishContext: "Managerial and decision-making positions in government institutions are monopolistically held by men, and women have almost no chance of reaching these positions",
+    audio: "03.wav",
+    multipleChoice: [
+      {
+        question: "What can be inferred about women’s access to leadership roles?",
+        options: [
+          { answer: "Women frequently hold managerial positions", correct: false },
+          { answer: "Women rarely access top government roles", correct: true },
+          { answer: "Women and men are equally represented", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "بَرابَری",
+    correct: "equality",
+    distractors: ["against", "fair"],
+    farsiContext: "جنبش‌های مدنی و حقوق بشری در ایران سال‌هاست برای  حق برابری میان زنان و مردان در عرصه‌های سیاسی، اقتصادی و فرهنگی مبارزه می‌کنند",
+    englishContext: "Civil and human rights movements in Iran have long been fighting for equality between women and men in political, economic, and cultural arenas",
+    audio: "04.wav",
+    multipleChoice: [
+      {
+        question: "What best captures the aim of these movements?",
+        options: [
+          { answer: "Achieving equality across society", correct: true },
+          { answer: "Preserving traditional gender hierarchies", correct: false },
+          { answer: "Limiting women’s roles", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "بَخشنامِه",
+    correct: "memorandum",
+    distractors: ["department", "sectional"],
+    farsiContext: "انتشار یک بخشنامه جدید درباره محدودیت پوشش در دانشگاه‌ها، خشم بسیاری از دانشجویان دختر را برانگیخته و موجی از اعتراضات را در پی داشته است",
+    englishContext: "The issuance of a new decree regarding dress restrictions in universities has angered many female students and sparked a wave of protests",
+    audio: "05.wav",
+    multipleChoice: [
+      {
+        question: "What does the audio suggest about the effect of the decree?",
+        options: [
+          { answer: "Female students protested", correct: true },
+          { answer: "Female students largely accepted it", correct: false },
+          { answer: "Female students ignored it", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "بِه مَعنایِ .... بودن",
+    correct: "to mean (of a word)",
+    distractors: ["indicative", "explains"],
+    farsiContext: "محروم‌کردن زنان از ورود به برخی مشاغل رسمی به معنای نادیده گرفتن توانایی‌ها و استعدادهای آنان و تقویت تبعیض جنسیتی در جامعه است",
+    englishContext: "Denying women access to certain formal jobs means ignoring their abilities and talents and reinforcing gender discrimination in society",
+    audio: "06.wav",
+    multipleChoice: [
+      {
+        question: "What is a consequence of denying women certain jobs?",
+        options: [
+          { answer: "Recognition of their abilities", correct: false },
+          { answer: "Reinforcement of gender discrimination", correct: true },
+          { answer: "Equal opportunity for men and women", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "تَبعیض آمیز",
+    correct: "discriminatory",
+    distractors: ["unbiased", "inequitable"],
+    farsiContext: "سیاست‌های شغلی موجود در کشور به‌گونه‌ای تبعیض‌آمیز طراحی شده‌اند که حتی زنان تحصیل‌کرده نیز کمتر از مردان امکان پیشرفت دارند",
+    englishContext: "Existing employment policies in the country are designed in a discriminatory manner, so that even educated women have fewer opportunities for advancement than men",
+    audio: "07.wav",
+    multipleChoice: [
+      {
+        question: "How do current employment policies affect women?",
+        options: [
+          { answer: "Provide equal advancement opportunities", correct: false },
+          { answer: "Offer more opportunities than men", correct: false },
+          { answer: "Limit advancement opportunities compared to men", correct: true }
+        ]
+      }
+    ]
+  },
+  {
+    word: "تَفکیکِ جِنسیَّتی",
+    correct: "gender segregation",
+    distractors: ["commodity split", "class division"],
+    farsiContext: "اجرای تفکیک جنسیتی در مدارس و دانشگاه‌ها نه تنها آزادی انتخاب دختران را محدود می‌کند بلکه به کاهش کیفیت آموزش نیز منجر می‌شود",
+    englishContext: "Implementing gender segregation in schools and universities not only limits girls’ freedom of choice but also leads to a decline in education quality",
+    audio: "08.wav",
+    multipleChoice: [
+      {
+        question: "What is one likely effect of gender segregation in education?",
+        options: [
+          { answer: "Improves girls’ freedom", correct: false },
+          { answer: "Reduces education quality", correct: true },
+          { answer: "Ensures equal opportunities", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "جُداسازی",
+    correct: "segregation",
+    distractors: ["division", "isolation"],
+    farsiContext: "این نوع جداسازی اجباری زنان از فضاهای عمومی، فرصت مشارکت اجتماعی آنان را کاهش داده و آن‌ها را  به حاشیه جامعه می کشاند",
+    englishContext: "This type of forced separation of women from public spaces reduces their opportunities for social participation and pushes them to the margins of society",
+    audio: "09.wav",
+    multipleChoice: [
+      {
+        question: "What does forced separation from public spaces result in?",
+        options: [
+          { answer: "Greater social participation", correct: false },
+          { answer: "Reduced opportunities and marginalization", correct: true },
+          { answer: "Increased leadership roles", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "حجاب",
+    correct: "hijab, body coverings",
+    distractors: ["scarf", "tent"],
+    farsiContext: "اجبار حجاب بر زنان در ایران آزادی شخصی آنان را نقض می‌کند و به یکی از محورهای اصلی اعتراضات اجتماعی تبدیل شده است",
+    englishContext: "Mandatory imposition of the hijab on women in Iran violates their personal freedom and has become one of the main focal points of social protests",
+    audio: "10.wav",
+    multipleChoice: [
+      {
+        question: "How is mandatory hijab described in the passage?",
+        options: [
+          { answer: "Promotes personal freedom", correct: false },
+          { answer: "Encourages gender equality", correct: false },
+          { answer: "Violates personal freedom", correct: true }
+        ]
+      }
+    ]
+  },
+  {
+    word: "حَذف کردن",
+    correct: "to eliminate",
+    distractors: ["to include", "to protect"],
+    farsiContext: "تلاش برخی نهادهای حکومتی برای حذف کردن زنان از عرصه‌های ورزشی و هنری، نقض آشکار حقوق شهروندی و انسانی آنان محسوب می‌شود",
+    englishContext: "Efforts by some government institutions to exclude women from sports and the arts constitute a blatant violation of their civil and human rights",
+    audio: "11.wav",
+    multipleChoice: [
+      {
+        question: "Excluding women from certain fields is considered:",
+        options: [
+          { answer: "Promotion of equality", correct: false },
+          { answer: "Violation of civil rights", correct: true },
+          { answer: "Opportunity for men", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "حِضانَت",
+    correct: "custody",
+    distractors: ["adoption", "ownership"],
+    farsiContext: "در بسیاری از پرونده‌های خانوادگی، قوانین حضانت به‌گونه‌ای تنظیم شده که حق حضانت فرزندان معمولاً به پدر داده می‌شود، حتی اگر مادر از شرایط بهتری برای سرپرستی برخوردار باشد",
+    englishContext: "In many family cases, custody laws are set up so that custody of children is usually given to the father, even if the mother is better suited for the role",
+    audio: "12.wav",
+    multipleChoice: [
+      {
+        question: "Who usually receives custody under these laws?",
+        options: [
+          { answer: "Mother", correct: false },
+          { answer: "Father", correct: true },
+          { answer: "Shared equally", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "حَق / حُقوق",
+    correct: "right(s)",
+    distractors: ["wage", "duty"],
+    farsiContext: "زنان ایرانی بارها تأکید کرده‌اند که برخورداری از حقوق برابر نه یک امتیاز، بلکه یک حق طبیعی و اساسی برای همه انسان‌هاست",
+    englishContext: "Iranian women have repeatedly emphasized that having equal rights is not a privilege but a natural and fundamental human right for all",
+    audio: "13.wav",
+    multipleChoice: [
+      {
+        question: "How do women view equal rights?",
+        options: [
+          { answer: "As a privilege", correct: false },
+          { answer: "As a fundamental human right", correct: true },
+          { answer: "As unnecessary", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "خَلافِ",
+    correct: "against, contrary to",
+    distractors: ["according to", "in favor of"],
+    farsiContext: "محدودیت ورود زنان به برخی اماکن عمومی، آشکارا خلافِ اصول عدالت اجتماعی و قوانین بین‌المللی حقوق بشر است",
+    englishContext: "Restrictions on women’s access to certain public places are clearly against the principles of social justice and international human rights laws",
+    audio: "14.wav",
+    multipleChoice: [
+      {
+        question: "How are restrictions on public access viewed?",
+        options: [
+          { answer: "Consistent with social justice", correct: false },
+          { answer: "Encouraging equality", correct: false },
+          { answer: "Against social justice and human rights", correct: true }
+        ]
+      }
+    ]
+  },
+  {
+    word: "رَنج بُردَن",
+    correct: "to suffer",
+    distractors: ["to win", "to celebrate"],
+    farsiContext: "زنان در جوامعی که حقوق‌شان نادیده گرفته می‌شود، ناچارند سال‌ها از فشارهای روحی، اجتماعی و اقتصادی رنج ببرند",
+    englishContext: "Women in societies where their rights are ignored are forced to endure years of psychological, social, and economic pressures",
+    audio: "15.wav",
+    multipleChoice: [
+      {
+        question: "What do women face when their rights are denied?",
+        options: [
+          { answer: "Social privileges", correct: false },
+          { answer: "Psychological, social, and economic pressures", correct: true },
+          { answer: "Equal opportunities", correct: false }
+        ]
+      }
+    ]
+  },
+{
+   word: "رَویِّه",
+    correct: "procedure",
+    distractors: ["decision", "opinion"],
+    farsiContext: "برخی از دادگاه‌ها با اتخاذ رویه‌های غیرمنصفانه، عملاً زنان را در برابر مردان در موقعیت ضعف قرار می‌دهند",
+    englishContext: "Some courts, by adopting unfair procedures, effectively place women at a disadvantage compared to men",
+    audio: "16.wav",
+    multipleChoice: [
+      {
+        question: "How do unfair court procedures affect women?",
+        options: [
+          { answer: "Give them an advantage", correct: false },
+          { answer: "Place them at a disadvantage", correct: true },
+          { answer: "Treat them equally", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "صِرفاً",
+    correct: "merely",
+    distractors: ["fairly", "rarely"],
+    farsiContext: "محروم‌کردن زنان از حق انتخاب پوشش تنها به این دلیل که زن هستند، اقدامی تبعیض‌آمیز است و صرفاً بر پایه نگاه جنسیتی شکل گرفته است",
+    englishContext: "Denying women the right to choose their clothing simply because they are women is a discriminatory act based purely on gender",
+    audio: "17.wav",
+    multipleChoice: [
+      {
+        question: "Forcing clothing choices on women is:",
+        options: [
+          { answer: "Gender-based discrimination", correct: true },
+          { answer: "Neutral policy", correct: false },
+          { answer: "Reward for compliance", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "عِبارَت بودن از",
+    correct: "to consist of",
+    distractors: ["to exclude", "to depend on"],
+    farsiContext: "اصلاح واقعی قوانین حقوق زنان باید عبارت باشد از مجموعه‌ای از تغییرات بنیادین در حوزه‌ی کار، تحصیل و مشارکت اجتماعی",
+    englishContext: "Real reform of women’s rights laws should consist of a set of fundamental changes in the fields of work, education, and social participation",
+    audio: "18.wav",
+    multipleChoice: [
+      {
+        question: "What areas require reform for true women’s rights progress?",
+        options: [
+          { answer: "Work, education, and social participation", correct: true },
+          { answer: "Only social spaces", correct: false },
+          { answer: "Fashion and culture", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "قَدردانی کردن",
+    correct: "to thank, to acknowledge",
+    distractors: ["to assess", "to criticize"],
+    farsiContext: "بسیاری از زنان ایرانی بارها از مردانی که در کنار آن‌ها برای برابری جنسیتی تلاش می‌کنند قدردانی کرده‌اند",
+    englishContext: "Many Iranian women have repeatedly expressed gratitude toward men who work alongside them for gender equality",
+    audio: "19.wav",
+    multipleChoice: [
+      {
+        question: "How do women respond to men supporting gender equality?",
+        options: [
+          { answer: "Indifferent", correct: false },
+          { answer: "Express gratitude", correct: true },
+          { answer: "Oppose it", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+  word: "کُنوانسیون",
+    correct: "convention",
+    distractors: ["vaccination", "constitution"],
+    farsiContext: "ایران هنوز به برخی از کنوانسیون‌های بین‌المللی مربوط به رفع تبعیض علیه زنان نپیوسته است، که این موضوع موجب انتقاد گسترده شده است",
+    englishContext: "Iran has still not acceded to certain international conventions on eliminating discrimination against women, which has drawn widespread criticism",
+    audio: "20.wav",
+    multipleChoice: [
+      {
+        question: "What has Iran not yet done regarding international conventions?",
+        options: [
+          { answer: "Fully acceded", correct: true },
+          { answer: "Ignored criticism", correct: false },
+          { answer: "Enforced them strictly", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "کوشِش کردن",
+    correct: "to strive",
+    distractors: ["to migrate", "to retreat"],
+    farsiContext: "زنان ایرانی سال‌هاست که در عرصه‌های اجتماعی و سیاسی برای به دست آوردن حقوق برابر با مردان کوشش می‌کنند",
+    englishContext: "Iranian women have been striving for years in social and political arenas to achieve equal rights with men",
+    audio: "21.wav",
+    multipleChoice: [
+      {
+        question: "What have Iranian women been working toward?",
+        options: [
+          { answer: "Traditional roles", correct: false },
+          { answer: "Equal rights with men", correct: true },
+          { answer: "Reduced political participation", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "لَغو کَردَن",
+    correct: "to cancel",
+    distractors: ["to approve", "to establish"],
+    farsiContext: "بسیاری از فعالان مدنی خواستار لغو کردن قوانین و مقرراتی شده‌اند که زنان را از انتخاب آزادانه شغل و پوشش محروم می‌سازد",
+    englishContext: "Many civil activists have called for the repeal of laws and regulations that deprive women of the freedom to choose their jobs and clothing",
+    audio: "22.wav",
+    multipleChoice: [
+      {
+        question: "What is the activists’ main demand?",
+        options: [
+          { answer: "Repeal restrictive laws", correct: true },
+          { answer: "Impose more restrictions", correct: false },
+          { answer: "Maintain current laws", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "مُتِعَهِّد شُدَن",
+    correct: "to commit, to undertake",
+    distractors: ["to refuse", "to neglect"],
+    farsiContext: "دولت‌ها باید متعهد شوند که تبعیض علیه زنان را در تمام عرصه‌های اجتماعی و اقتصادی از میان بردارند",
+    englishContext: "Governments must commit to eliminating discrimination against women in all social and economic fields",
+    audio: "23.wav",
+    multipleChoice: [
+      {
+        question: "What is required of governments?",
+        options: [
+          { answer: "Increase discrimination", correct: false },
+          { answer: "Eliminate discrimination", correct: true },
+          { answer: "Focus only on men", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "مُساوی",
+    correct: "equal, tie (game)",
+    distractors: ["different", "limited"],
+    farsiContext: "عدالت اجتماعی تنها زمانی محقق می‌شود که زنان و مردان از فرصت‌های شغلی و آموزشی مساوی برخوردار باشند",
+    englishContext: "Social justice can only be achieved when women and men have equal access to job and educational opportunities",
+    audio: "24.wav",
+    multipleChoice: [
+      {
+        question: "What is essential for social justice?",
+        options: [
+          { answer: "Equal access to work and education", correct: true },
+          { answer: "Gender-based job allocation", correct: false },
+          { answer: "Limiting women’s education", correct: false }
+        ]
+      }
+    ]
+  },
+{
+  word: "مُعتَرِض بودَن",
+    correct: "to protest",
+    distractors: ["to agree", "to accept"],
+    farsiContext: "هزاران زن ایرانی در سال‌های اخیر نسبت به قوانین ناعادلانه درباره حقوق و آزادی‌های فردی خود معترض بوده‌اند",
+    englishContext: "Thousands of Iranian women have protested in recent years against unjust laws concerning their rights and personal freedoms",
+    audio: "25.wav",
+    multipleChoice: [
+      {
+        question: "How have women responded to unjust laws?",
+        options: [
+          { answer: "Protests", correct: true },
+          { answer: "Support", correct: false },
+          { answer: "Silence", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "نابَرابَری",
+    correct: "inequality",
+    distractors: ["justice", "balance"],
+    farsiContext: "وجود نابرابری عمیق میان زنان و مردان در عرصه‌های شغلی و حقوقی، توسعه‌ی پایدار کشور را به‌شدت تهدید می‌کند",
+    englishContext: "The existence of deep inequality between women and men in professional and legal spheres severely threatens the country’s sustainable development",
+    audio: "26.wav",
+    multipleChoice: [
+      {
+        question: "What is a major consequence of gender inequality?",
+        options: [
+          { answer: "Threat to sustainable development", correct: true },
+          { answer: "Ensures prosperity", correct: false },
+          { answer: "No effect", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "نِصف",
+    correct: "half",
+    distractors: ["majority", "quarter"],
+    farsiContext: "زنان نیمی از جمعیت کشور را تشکیل می‌دهند، اما در بسیاری از عرصه‌ها حتی از حقوقی کمتر از نصف مردان برخوردارند",
+    englishContext: "Women make up half of the country’s population, yet in many arenas, they have even less than half the rights of men",
+    audio: "27.wav",
+    multipleChoice: [
+      {
+        question: "What does the passage imply about women’s rights?",
+        options: [
+          { answer: "Equal to population proportion", correct: false },
+          { answer: "Less than half compared to men", correct: true },
+          { answer: "More than men", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "نُقطِه‌‌ی عَطف",
+    correct: "turning point",
+    distractors: ["beginning", "final point"],
+    farsiContext: "اعتراضات گسترده زنان علیه قوانین تبعیض‌آمیز را می‌توان یک نقطه‌ی عطف مهم در تاریخ مبارزات مدنی ایران دانست",
+    englishContext: "The widespread protests of women against discriminatory laws can be seen as an important turning point in the history of civil struggles in Iran",
+    audio: "28.wav",
+    multipleChoice: [
+      {
+        question: "How are women’s protests described?",
+        options: [
+          { answer: "Insignificant", correct: false },
+          { answer: "Important turning point", correct: true },
+          { answer: "Counterproductive", correct: false }
+        ]
+      }
+    ]
+  },
+  {
+    word: "نیمکَت",
+    correct: "bench",
+    distractors: ["bed", "table"],
+    farsiContext: "به منظور رعایت قوانین تفکیک جنسیتی در پارک ها، شهرداری تهران اعلام کرد که دختران و پسران باید روی نیمکت های جداگانه بنشینند",
+    englishContext: "To comply with gender segregation laws in parks, the Tehran municipality announced that girls and boys must sit on separate benches",
+    audio: "29.wav",
+    multipleChoice: [
+      {
+        question: "What did the Tehran municipality require in parks?",
+        options: [
+          { answer: "Separate benches for boys and girls", correct: true },
+          { answer: "Mixed seating", correct: false },
+          { answer: "No restrictions", correct: false }
+        ]
+      }
+    ]
+  }
+];
+
+let currentIndex = 0;
+let currentChances = 0;
+let answeredCorrectly = false;
+
+const vocabWordElem = document.getElementById("vocab-word");
+const answersElem = document.getElementById("answers");
+const farsiContextElem = document.getElementById("farsi-context");
+const englishContextElem = document.getElementById("english-context");
+const audioPlayer = document.getElementById("audio-player");
+const backBtn = document.getElementById("back-btn");
+const nextBtn = document.getElementById("next-btn");
+const progressText = document.getElementById("progress-text");
+const revealBtn = document.getElementById("reveal-btn");
+const revealIndicator = document.getElementById("reveal-indicator");
+const audioMCSection = document.getElementById("audio-mc-section");
+
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function loadWord(index) {
+  const vocab = vocabData[index];
+  currentChances = 0;
+  answeredCorrectly = false;
+
+  vocabWordElem.textContent = vocab.word;
+
+  let options = [
+    { text: vocab.correct, isCorrect: true },
+    { text: vocab.distractors[0], isCorrect: false },
+    { text: vocab.distractors[1], isCorrect: false },
+  ];
+  options = shuffleArray(options);
+
+  answersElem.innerHTML = "";
+  const colors = ["color-blue", "color-orange", "color-purple"];
+  options.forEach((option, idx) => {
+    const div = document.createElement("div");
+    div.className = `answer-box ${colors[idx]}`;
+    div.textContent = option.text;
+    div.dataset.isCorrect = option.isCorrect;
+
+    const feedbackSpan = document.createElement("span");
+    feedbackSpan.className = "feedback";
+    div.appendChild(feedbackSpan);
+
+    div.addEventListener("click", () => {
+      if (answeredCorrectly) return;
+      if (div.classList.contains("disabled")) return;
+
+      currentChances++;
+
+      if (option.isCorrect) {
+        feedbackSpan.textContent = "✅";
+        answeredCorrectly = true;
+        disableAllExcept(div);
+        if (vocab.multipleChoice) showAudioMC(vocab.multipleChoice[0]);
+      } else {
+        feedbackSpan.textContent = "❌";
+        if (currentChances >= 2) {
+          showCorrectAnswer();
+          disableAllExcept(null);
+          if (vocab.multipleChoice) showAudioMC(vocab.multipleChoice[0]);
+        } else {
+          div.classList.add("disabled");
+        }
+      }
+    });
+
+    answersElem.appendChild(div);
+  });
+
+  farsiContextElem.textContent = vocab.farsiContext;
+  farsiContextElem.classList.remove("context-clear");
+  englishContextElem.textContent = "";
+  revealBtn.disabled = true;
+  revealBtn.classList.remove("active");
+  revealIndicator.style.display = "none";
+
+  audioPlayer.src = vocab.audio;
+  audioPlayer.load();
+
+  progressText.textContent = `Vocabulary ${index + 1} of ${vocabData.length}`;
+  backBtn.disabled = index === 0;
+  nextBtn.disabled = index === vocabData.length - 1;
+
+  audioMCSection.style.display = "none";
+}
+
+function disableAllExcept(exceptDiv) {
+  const answerBoxes = answersElem.querySelectorAll(".answer-box");
+  answerBoxes.forEach(box => { if (box !== exceptDiv) box.classList.add("disabled"); });
+}
+
+function showCorrectAnswer() {
+  const answerBoxes = answersElem.querySelectorAll(".answer-box");
+  answerBoxes.forEach(box => { if (box.dataset.isCorrect === "true") box.querySelector(".feedback").textContent = "✅"; });
+}
+
+function showAudioMC(mcData) {
+  if (!mcData) return;
+  audioMCSection.style.display = "block";
+  audioMCSection.innerHTML = "";
+
+  const questionElem = document.createElement("p");
+  questionElem.textContent = mcData.question;
+  audioMCSection.appendChild(questionElem);
+
+  mcData.options.forEach((opt, idx) => {
+    const div = document.createElement("div");
+    const colors = ["color-blue", "color-orange", "color-purple"];
+    div.className = `answer-box ${colors[idx]}`;
+    div.dataset.correct = opt.correct;
+    div.textContent = opt.answer;
+
+    const feedbackSpan = document.createElement("span");
+    feedbackSpan.className = "feedback";
+    div.appendChild(feedbackSpan);
+
+    div.addEventListener("click", () => {
+      if (div.classList.contains("disabled")) return;
+
+      if (opt.correct) {
+        feedbackSpan.textContent = "✅";
+        revealBtn.disabled = false;
+        revealBtn.classList.add("active");
+        revealIndicator.style.display = "block";
+        disableAllAudioExcept(div);
+      } else {
+        feedbackSpan.textContent = "❌";
+        div.classList.add("disabled");
+        const remaining = audioMCSection.querySelectorAll(".answer-box:not(.disabled)");
+        if (remaining.length === 1) {
+          remaining[0].querySelector(".feedback").textContent = "✅";
+          revealBtn.disabled = false;
+          revealBtn.classList.add("active");
+          revealIndicator.style.display = "block";
+          disableAllAudioExcept(remaining[0]);
+        }
+      }
+    });
+
+    audioMCSection.appendChild(div);
+  });
+}
+
+function disableAllAudioExcept(exceptDiv) {
+  const answerBoxes = audioMCSection.querySelectorAll(".answer-box");
+  answerBoxes.forEach(box => { if (box !== exceptDiv) box.classList.add("disabled"); });
+}
+
+revealBtn.addEventListener("click", () => {
+  farsiContextElem.classList.add("context-clear");
+  englishContextElem.textContent = vocabData[currentIndex].englishContext;
+  revealBtn.disabled = true;
+  revealBtn.classList.remove("active");
+  revealIndicator.style.display = "none";
+});
+
+backBtn.addEventListener("click", () => {
+  if (currentIndex > 0) { currentIndex--; loadWord(currentIndex); }
+});
+
+nextBtn.addEventListener("click", () => {
+  if (currentIndex < vocabData.length - 1) { currentIndex++; loadWord(currentIndex); }
+});
+
+loadWord(currentIndex);
+</script>
+<!-- celebration + feedback system -->
+<style>
+  #gif-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+  }
+
+  .celebration-gif {
+    position: absolute;
+    object-fit: contain;
+    animation: floatUp 2200ms cubic-bezier(.2,.9,.2,1) forwards;
+    will-change: transform, opacity;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  @keyframes floatUp {
+    0% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+    100% { opacity: 0; transform: translateY(-160px) scale(1.45) rotate(20deg); }
+  }
+
+  #try-again {
+    color: red;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  #try-again.show {
+    opacity: 1;
+  }
+</style>
+
+<div id="gif-container"></div>
+<div id="try-again"></div>
+
+<audio id="sound-correct" src="correct.mp3" preload="auto"></audio>
+<audio id="sound-wrong" src="wrong.mp3" preload="auto"></audio>
+
+<script>
+(function(){
+  const gifList = [
+    "https://media.giphy.com/media/111ebonMs90YLu/giphy.gif",
+    "https://media.giphy.com/media/26gsiCIKW7ANEmxKE/giphy.gif",
+    "https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif",
+    "https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif"
+  ];
+
+  const container = document.getElementById("gif-container");
+  const tryAgainEl = document.getElementById("try-again");
+  const soundCorrect = document.getElementById("sound-correct");
+  const soundWrong = document.getElementById("sound-wrong");
+
+  function spawnGifAt(x, y) {
+    const img = document.createElement("img");
+    img.src = gifList[Math.floor(Math.random() * gifList.length)];
+    img.className = "celebration-gif";
+
+    const size = 60 + Math.floor(Math.random() * 120); // 60–180 px
+    img.style.width = size + "px";
+    img.style.height = size + "px";
+
+    const offsetX = Math.floor(Math.random() * 120) - 60;
+    const offsetY = Math.floor(Math.random() * 60) - 30;
+    img.style.left = (x - size/2 + offsetX) + "px";
+    img.style.top = (y - size/2 + offsetY) + "px";
+
+    img.style.transform = `rotate(${Math.floor(Math.random() * 50) - 25}deg)`;
+
+    container.appendChild(img);
+
+    setTimeout(() => img.remove(), 2400);
+  }
+
+  function burstAt(x, y) {
+    const count = 3 + Math.floor(Math.random() * 3); // 3–5 gifs
+    for (let i = 0; i < count; i++) {
+      setTimeout(() => spawnGifAt(
+        x + Math.floor(Math.random()*50-25),
+        y + Math.floor(Math.random()*30-15)
+      ), i * 100);
+    }
+  }
+
+  function showTryAgain() {
+    tryAgainEl.textContent = "❌ Try again";
+    tryAgainEl.classList.add("show");
+    setTimeout(() => tryAgainEl.classList.remove("show"), 1500);
+  }
+
+  document.addEventListener("click", function(e) {
+    const answerBox = e.target.closest(".answer-box");
+    if (!answerBox) return;
+
+    const isCorrect = answerBox.dataset.correct === "true" ||
+                      answerBox.dataset.isCorrect === "true" ||
+                      answerBox.getAttribute("data-is-correct") === "true";
+
+    if (isCorrect) {
+      soundCorrect.currentTime = 0;
+      soundCorrect.play();
+      burstAt(e.pageX || window.innerWidth/2, e.pageY || window.innerHeight/2);
+    } else {
+      soundWrong.currentTime = 0;
+      soundWrong.play();
+      showTryAgain();
+    }
+  });
+})();
+</script>
+<!-- end celebration + feedback system -->
+</body>
+</html>
